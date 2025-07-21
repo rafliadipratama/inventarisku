@@ -1,58 +1,60 @@
 # 📦 Aplikasi Inventaris Barang (Laravel)
 
-Aplikasi web sederhana untuk mencatat dan mengelola inventaris barang. Dibuat menggunakan Laravel dan Tailwind CSS. Mendukung fitur login, CRUD barang, pencarian, validasi, dan middleware untuk autentikasi admin.
+Aplikasi web sederhana untuk mencatat dan mengelola inventaris barang. Dibuat menggunakan Laravel dan Tailwind CSS. Mendukung fitur login, CRUD barang, pencarian, validasi, dan middleware autentikasi admin.
 
 ---
 
 ## 🚀 Fitur Utama
 
 - 🔐 Autentikasi (Login & Logout)
-- 📄 Manajemen Data Barang (Create, Read, Update, Delete)
-- 🔍 Pencarian Barang
-- ✅ Validasi Formulir
-- 🛡️ Middleware proteksi halaman
-- 📚 Struktur kode mengikuti best practices (Controller, FormRequest, Blade)
+- 📄 CRUD Data Barang (Create, Read, Update, Delete)
+- 🔍 Fitur Pencarian Barang
+- ✅ Validasi Form dengan `FormRequest`
+- 🛡️ Proteksi halaman menggunakan Middleware (`auth`)
+- 🧱 Struktur kode mengikuti best practices (Controller, Blade, Request)
 
 ---
 
-## 🧰 Teknologi
+## 🧰 Teknologi yang Digunakan
 
-- Laravel 10+
-- PHP 8.1+
-- Tailwind CSS
-- Blade Template
-- SQLite / MySQL (opsional)
+- **Laravel 10+**
+- **PHP 8.1+**
+- **Tailwind CSS**
+- **Blade Template Engine**
+- **SQLite / MySQL** (opsional)
 
 ---
 
 ## 🛠️ Instalasi & Setup
 
-1. Clone repo:
+1. **Clone repositori:**
    ```bash
-   git clone https://github.com/username/nama-project.git
-   cd nama-project
+   git clone https://github.com/rafliadipratama/inventarisku.git
+   cd inventarisku
 
-2. Install dependensi:
+2. **Install dependensi:**
 
    ```bash
    composer install
    npm install && npm run dev
    ```
 
-3. Konfigurasi file `.env`:
+3. **Konfigurasi file `.env`:**
 
    ```bash
    cp .env.example .env
    php artisan key:generate
    ```
 
-4. Setup database (SQLite/MySQL):
+4. **Setup database:**
 
-   ```bash
-   php artisan migrate
-   ```
+   * Gunakan SQLite (default) atau MySQL, lalu migrasikan:
 
-5. Jalankan aplikasi:
+     ```bash
+     php artisan migrate
+     ```
+
+5. **Jalankan aplikasi:**
 
    ```bash
    php artisan serve
@@ -62,42 +64,54 @@ Aplikasi web sederhana untuk mencatat dan mengelola inventaris barang. Dibuat me
 
 ## 👤 Akun Login
 
-> **Catatan:** Hanya user yang sudah login yang bisa mengakses fitur CRUD.
+> 🔒 Hanya pengguna yang sudah login yang dapat mengakses halaman CRUD barang.
 
-Jika belum ada akun, kamu bisa:
+Jika belum ada akun:
 
-* Membuat seeder sendiri
-* Register dari UI (jika route auth/register diaktifkan)
+* Aktifkan fitur **register** di auth scaffolding, atau
+* Buat user manual/seeder menggunakan `tinker`:
+
+  ```bash
+  php artisan tinker
+  ```
 
 ---
 
-## 🧪 Struktur Folder Penting
+## 📂 Struktur Folder Penting
 
 ```
 app/
 ├── Http/
 │   ├── Controllers/ItemController.php
-│   ├── Requests/StoreItemRequest.php
-│   └── Requests/UpdateItemRequest.php
+│   └── Requests/
+│       ├── StoreItemRequest.php
+│       └── UpdateItemRequest.php
 resources/
 └── views/items/
     ├── index.blade.php
     ├── create.blade.php
-    ├── edit.blade.php
+    └── edit.blade.php
 routes/
 └── web.php
 ```
 
 ---
 
-## ✍️ Kontribusi
+## 🤝 Kontribusi
 
-Pull request dan masukan sangat diterima. Silakan fork repository ini dan buat perubahan sesuai kebutuhan.
+Pull request, saran, dan feedback sangat diterima!
+Silakan fork repository ini dan kirim perubahanmu.
+
+---
+
+## 👨‍💻 Author
+
+**Rafli Adipratama**
+📫 [GitHub](https://github.com/rafliadipratama)
+📧 [rafliadipratama@email.com](mailto:rafliadipratma@email.com) 
 
 ---
 
 ## 📄 Lisensi
 
-Proyek ini menggunakan lisensi [MIT](LICENSE).
-
----
+Proyek ini dirilis dengan lisensi [MIT](LICENSE).
