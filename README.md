@@ -31,7 +31,6 @@ Aplikasi web sederhana untuk mencatat dan mengelola inventaris barang. Dibuat me
    ```bash
    git clone https://github.com/username/nama-project.git
    cd nama-project
-``
 
 2. Install dependensi:
 
