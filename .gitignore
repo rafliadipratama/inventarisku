@@ -1,19 +1,33 @@
-/.phpunit.cache
+# Laravel & PHP
+/vendor
 /node_modules
 /public/build
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
+/storage/pail
+/bootstrap/compiled.php
+/app/storage/
+.phpunit.result.cache
+.phpunit.cache
+.phpactor.json
+
+# Environment
 .env
 .env.backup
 .env.production
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
 auth.json
+
+# Logs
 npm-debug.log
 yarn-error.log
-/.fleet
+
+# Homestead & Vagrant
+Homestead.json
+Homestead.yaml
+/.vagrant
+
+# IDE / Editor
 /.idea
 /.vscode
+/.fleet
