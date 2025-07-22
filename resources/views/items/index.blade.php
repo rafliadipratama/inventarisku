@@ -6,7 +6,16 @@
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
             <h1 class="text-2xl font-bold text-heading mb-4 sm:mb-0">📦 Data Inventaris</h1>
             <div class="flex flex-wrap gap-2">
-                <form method="GET" action="{{ route('items.index') }}" class="flex">
+                {{-- Filter & Search --}}
+                <form method="GET" action="{{ route('items.index') }}" class="flex gap-2 items-center">
+                    <select name="kategori" class="border border-gray-300 px-2 py-2 rounded text-sm bg-white">
+                        <option value="">Semua Kategori</option>
+                        @foreach($kategoris as $kategori)
+                            <option value="{{ $kategori }}" {{ request('kategori') == $kategori ? 'selected' : '' }}>
+                                {{ $kategori }}
+                            </option>
+                        @endforeach
+                    </select>
                     <input
                         type="text"
                         name="search"
@@ -18,18 +27,30 @@
                         Cari
                     </button>
                 </form>
+
+                {{-- Tambah & Export --}}
                 <a href="{{ route('items.create') }}" class="bg-secondary hover:bg-green-600 text-white px-4 py-2 rounded text-sm">
                     + Tambah Barang
                 </a>
+
+                {{-- Export Excel --}}
+                <form method="GET" action="{{ route('items.export.excel') }}">
+                    <input type="hidden" name="kategori" value="{{ request('kategori') }}">
+                    <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded text-sm">
+                        📤 Export Excel
+                    </button>
+                </form>
             </div>
         </div>
 
+        {{-- Notifikasi --}}
         @if (session('success'))
             <div class="bg-green-100 text-green-800 px-4 py-2 rounded mb-4 border border-green-300 text-sm">
                 {{ session('success') }}
             </div>
         @endif
 
+        {{-- Tabel --}}
         <div class="overflow-x-auto">
             <table class="min-w-full text-sm text-left text-text border border-gray-300 rounded-lg overflow-hidden">
                 <thead class="bg-background text-heading uppercase text-xs">
@@ -73,7 +94,7 @@
         </div>
 
         <div class="mt-6">
-            {{ $items->appends(['search' => $search])->links() }}
+            {{ $items->appends(['search' => $search, 'kategori' => request('kategori')])->links() }}
         </div>
     </div>
 </div>

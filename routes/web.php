@@ -15,6 +15,8 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', fn () => redirect('/dashboard'));
+Route::get('/items/export/excel', [ItemController::class, 'exportExcel'])->name('items.export.excel');
+Route::get('/items/export/pdf', [ItemController::class, 'exportPdf'])->name('items.export.pdf');
 
 // Route yang hanya bisa diakses oleh user yang sudah login
 Route::middleware(['auth'])->group(function () {
